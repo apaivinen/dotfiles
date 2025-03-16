@@ -2,7 +2,7 @@
 
 #sudo apt update && sudo apt upgrade -y
 
-sudo apt install -y zsh git golan vim wget
+sudo apt install -y zsh git vim wget
 
 zsh
 sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
