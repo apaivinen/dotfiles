@@ -62,10 +62,12 @@ update_prompt() {
   local dir_display="$PWD"
 
   # Format ~ with purple when in home directory, otherwise color ~ separately
-  if [[ "$PWD" == "$HOME" ]]; then
+   if [[ "$PWD" == "$HOME" ]]; then
     dir_display="%{$hotpink%}~%{$reset_color%}"
-  else
+  elif [[ "$PWD" =~ ^"$HOME"(/|$) ]]; then
     dir_display="%{$hotpink%}~%{$white%}${PWD#$HOME}%{$reset_color%}"
+  else
+    dir_display="%{$white%}$PWD%{$reset_color%}"
   fi
 
   if [ -z "$(git_current_branch)" ]; then
@@ -76,10 +78,6 @@ update_prompt() {
 %{$limegreen%}└─»%{$reset_color%}'
   fi
 }
-
-
-
-
 
 
 # Update prompt before every command
